@@ -1,12 +1,6 @@
-//------------- my doing----------might edit this later
-
-
-
-
-
 // Constructor Function
 function BigProduct(serial, color, size, price, hasDiscount) {
-    this.serial = `#${serial}`
+    this.serial = `#${serial}`;
     this.color = color;
     this.size = size;
     this.price = hasDiscount ? price - 100 : price; // Apply discount if applicable
@@ -18,51 +12,36 @@ function BigProduct(serial, color, size, price, hasDiscount) {
     };
 }
 
-// Original product
-let product = new BigProduct(8722631,"red", "xl", 500, true);
-
-// -----------------------------Upgrade to the size-----------------------------
-const productUpgrade = Object.assign({}, product, { size: "xl, xxl" });
+// Array to hold multiple products
+let products = [
+    new BigProduct(8722631, "red", "xl", 500, true),
+    new BigProduct(1234567, "blue", "m", 500, false),
+    new BigProduct(9876543, "green", "l", 500, true)
+];
 
 let finalData = "";
 
-// Loop to generate output for the upgraded product
-for (let info in productUpgrade) {
-    if (info === "serial" ||info === "color" || info === "size" || info === "price") {
-        finalData += `The ${info} is => ${productUpgrade[info]} <br>`;
-    }
-}
+// Loop through each product in the array
+products.forEach(product => {
+    // Upgrade size for each product (example modification)
+    const productUpgrade = Object.assign({}, product, { size: `${product.size}, xxl` });
 
-// Add the discount message to the output
-finalData += productUpgrade.showMsg();
+    // Generate output for the product
+    for (let info in productUpgrade) {
+        if (info === "serial" || info === "color" || info === "size" || info === "price") {
+            finalData += `The ${info} is => ${productUpgrade[info]} <br>`;
+        }
+    }
+
+    // Add the discount message to the output
+    finalData += productUpgrade.showMsg() + "<br><br>";
+});
 
 // Display the final data in the HTML
 document.getElementById("info").innerHTML = finalData;
 
-// Log product details and discount message
-console.log(product);
-console.log(product.showMsg());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+// Log all products and their discount messages
+products.forEach(product => {
+    console.log(product);
+    console.log(product.showMsg());
+});
