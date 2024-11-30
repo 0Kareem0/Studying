@@ -5,7 +5,8 @@
 
 
 // Constructor Function
-function BigProduct(color, size, price, hasDiscount) {
+function BigProduct(serial, color, size, price, hasDiscount) {
+    this.serial = `#${serial}`
     this.color = color;
     this.size = size;
     this.price = hasDiscount ? price - 100 : price; // Apply discount if applicable
@@ -18,7 +19,7 @@ function BigProduct(color, size, price, hasDiscount) {
 }
 
 // Original product
-let product = new BigProduct("red", "xl", 500, true);
+let product = new BigProduct(8722631,"red", "xl", 500, true);
 
 // -----------------------------Upgrade to the size-----------------------------
 const productUpgrade = Object.assign({}, product, { size: "xl, xxl" });
@@ -27,7 +28,7 @@ let finalData = "";
 
 // Loop to generate output for the upgraded product
 for (let info in productUpgrade) {
-    if (info === "color" || info === "size" || info === "price") {
+    if (info === "serial" ||info === "color" || info === "size" || info === "price") {
         finalData += `The ${info} is => ${productUpgrade[info]} <br>`;
     }
 }
@@ -59,3 +60,9 @@ console.log(product.showMsg());
 
 
 
+
+
+
+
+
+ 
