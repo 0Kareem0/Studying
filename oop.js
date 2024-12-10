@@ -1,15 +1,16 @@
-// Constructor Function
-function BigProduct(serial, color, size, price, hasDiscount) {
-    this.serial = `#${serial}`;
-    this.color = color;
-    this.size = size;
-    this.price = hasDiscount ? price - 100 : price; // Apply discount if applicable
-    this.hasDiscount = hasDiscount;
+class BigProduct {
+    constructor(serial, color, size, price, hasDiscount) {
+        this.serial = `#${serial}`;
+        this.color = color;
+        this.size = size;
+        this.price = hasDiscount ? price - 100 : price; // Apply discount if applicable
+        this.hasDiscount = hasDiscount;
+    }
 
     // Method to display discount message
-    this.showMsg = function () {
+    showMsg() {
         return `You${this.hasDiscount ? "" : " Don't"} Have a Discount`;
-    };
+    }
 }
 
 // Array to hold multiple products
@@ -24,7 +25,10 @@ let finalData = "";
 // Loop through each product in the array
 products.forEach(product => {
     // Upgrade size for each product (example modification)
-    const productUpgrade = Object.assign({}, product, { size: `${product.size}, xxl` });
+    const productUpgrade = {
+        ...product,
+        size: `${product.size}, xxl`
+    };
 
     // Generate output for the product
     for (let info in productUpgrade) {
@@ -34,7 +38,7 @@ products.forEach(product => {
     }
 
     // Add the discount message to the output
-    finalData += productUpgrade.showMsg() + "<br><br>";
+    finalData += product.showMsg() + "<br><br>";
 });
 
 // Display the final data in the HTML
