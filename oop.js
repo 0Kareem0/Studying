@@ -24,7 +24,7 @@ let finalData = "";
 
 // Loop through each product in the array
 products.forEach(product => {
-    // Upgrade size for each product (example modification)
+    // Upgrade size for each product 
     const productUpgrade = {
         ...product,
         size: `${product.size}, xxl`
