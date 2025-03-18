@@ -1,0 +1,25 @@
+[
+    {
+        "serial": 8722631,
+        "color": "red",
+        "size": "xl",
+        "price": 500,
+        "discountType": "flat",
+        "discountValue": 100
+    },
+    {
+        "serial": 1234567,
+        "color": "blue",
+        "size": "m",
+        "price": 500,
+        "discountType": "none"
+    },
+    {
+        "serial": 9876543,
+        "color": "green",
+        "size": "l",
+        "price": 500,
+        "discountType": "percentage",
+        "discountValue": 20
+    }
+]
