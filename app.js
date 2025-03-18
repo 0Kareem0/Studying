@@ -80,11 +80,14 @@ app.get("/products", (req, res) => {
 });
 
 app.get("/products/:serial", (req, res) => {
-    const product = products.find(p => p.serial === `#${req.params.serial}`);
-    if (!product) {
-        return res.status(404).json({ message: "Product not found" });
+    const querySerial = `#${req.params.serial}`; // Add '#' to match the serial format
+    const filteredProducts = products.filter(p => p.serial.startsWith(querySerial));
+
+    if (filteredProducts.length === 0) {
+        return res.status(404).json({ message: "No products found with this serial prefix" });
     }
-    res.json(product);
+
+    res.json(filteredProducts);
 });
 
 // Start Server
